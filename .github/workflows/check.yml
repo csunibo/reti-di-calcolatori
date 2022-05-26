@@ -1,0 +1,63 @@
+name: Lint file names
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    name: Check file names
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - uses: csunibo/lint-filenames@v1.1.0
+        name: Lint file names under ./appunti
+        with:
+          path: "./appunti"
+          pattern: '^(\.gitkeep|([a-z0-9]+(-[a-z0-9]+)*\.[a-zA-Z]+))$'
+          recursive: "true"
+      - uses: csunibo/lint-filenames@v1.1.0
+        name: Lint file names under ./dispense
+        with:
+          path: "./dispense"
+          pattern: '^(\.gitkeep|(\d+(-[a-z0-9]+)+\.[a-zA-Z]+))$'
+          recursive: "true"
+      - uses: csunibo/lint-filenames@v1.1.0
+        name: Lint file names under ./esercizi
+        with:
+          path: "./esercizi"
+          pattern: '^(\.gitkeep|([a-z0-9]+(-[a-z0-9]+)*\.[a-zA-Z]+))$'
+          recursive: "true"
+      - uses: csunibo/lint-filenames@v1.1.0
+        name: Lint file names under ./lavagne
+        with:
+          path: "./lavagne"
+          pattern: '^(\.gitkeep|(\d{4}-\d{2}-\d{2}(-[a-z0-9]+)+\.[a-zA-Z]+))$'
+          recursive: "true"
+      - uses: csunibo/lint-filenames@v1.1.0
+        name: Lint file names under ./libri
+        with:
+          path: "./libri"
+          pattern: '^(\.gitkeep|([a-z0-9]+(-[a-z0-9]+)*\.[a-zA-Z]+))$'
+          recursive: "true"
+      - uses: csunibo/lint-filenames@v1.1.0
+        name: Lint file names under ./lucidi
+        with:
+          path: "./lucidi"
+          pattern: '^(\.gitkeep|(\d+(-[a-z0-9]+)+\.[a-zA-Z]+))$'
+          recursive: "true"
+      - uses: csunibo/lint-filenames@v1.1.0
+        name: Lint file names under ./prove
+        with:
+          path: "./prove"
+          pattern: '^(\.gitkeep)|((scritto|totale|parziale\d|orale(\d?)|progetto(\d?))-\d{4}(-\d{2}-\d{2})?(-[a-z0-9]+)?-(testo|soluzione)(-[a-z0-9]+)?\.[a-zA-Z0-9]+)$'
+          recursive: "true"
+      - uses: csunibo/lint-filenames@v1.1.0
+        name: Lint file names under ./varie
+        with:
+          path: "./varie"
+          pattern: '^(\.gitkeep|([a-z0-9]+(-[a-z0-9]+)*\.[a-zA-Z]+))$'
+          recursive: "true"
