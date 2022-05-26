@@ -1,0 +1,103 @@
+Facciamo un po' di esempi di indirizzi IPv4, relative reti e sottoreti
+e uso della maschera di rete
+Prendiamo la rete 
+130.136.0.0
+10000010.10001000.00000000.00000000 (in binario)
+che classe di rete è? Classe B.
+e prendiamo la sua maschera di rete (naturale, associata a rete di classe B)
+11111111.11111111.00000000.00000000 = 255.255.0.0 (netmask)
+
+se invece usassi la maschera di rete
+11111111.11111111.10000000.00000000 = 255.255.128.0 (netmask)
+in questo modo avrei definito 2 sottoreti da 2^15 host
+
+Prendiamo ora un host in particolare (host 72.48 della rete 130.136.0.0)
+10000010.10001000.01001000.00110000 (host 130.136.72.48 in binario)
+se usassi questa netmask che segue
+11111111.11111111.11000000.00000000 = 255.255.224.0 (netmask)
+avrei definito 4 sottoreti da 2^14 host, e l'host 72.48 in realtà
+finirebbe nella sottorete 01
+
+esercizio : numerare tutte le combinazioni di netmask number
+
+00000000 = 0
+10000000 = 128
+11000000 = 192
+11100000 = 224
+11110000 = 240
+11111000 = 248
+11111100 = 252
+11111110 = 254
+11111111 = 255
+
+quali di queste sono quindi maschere di rete legali:
+128.0.0.0 è una maschera di rete! molto strana ma si....
+255.128.0.0 è una maschera di rete!
+255.128.255.0 è una maschera di rete? NO.
+255.192.128.0 è una maschera di rete? NO.
+255.192.0.0 è una maschera di rete? SI
+
+esercizio 3: data la scheda di rete con indirizzo ipv4 che segue
+193.180.117.42
+e maschera di rete che segue
+255.255.255.224
+A quale rete/sottorete appartiene questo indirizzo IPv4 e quale è il numero di host?
+193.180.117.42
+11000001.10110100.01110101.00101010 (indirizzo IPv4)
+11111111.11111111.11111111.11100000 (maschera di rete)
+------------------------------------
+11000001.10110100.01110101.001 00000
+
+Pausa
+AVVISO: Venerdi 29 Ottobre: Lezione ANNULLATA!!!!
+
+Quali sono quindi gli indirizzi IPv4 di questa rete e sottorete? 
+(che io potrei assegnare a schede di rete della mia rete locale)
+
+11000001.10110100.01110101.001 00000 (host a zero indica la rete e sottorete)
+11000001.10110100.01110101.001 00001 (host 1) (valore dell'ultimo byte di indirizzo = 33 
+11000001.10110100.01110101.001 00010 (host 2) (... = 34)
+11000001.10110100.01110101.001 00011 (host 3) (... = 35)
+11000001.10110100.01110101.001 00100 ....
+....
+11000001.10110100.01110101.001 11110 (host 30) (... = 62)
+11000001.10110100.01110101.001 11111 (host number tutto a UNO = 31 = 
+broadcast di rete e sottorete), (valore dell'ultimo byte = 63)
+Gli indirizzi IPv4 di questa rete e sottorete saranno quindi
+193.180.117.33 (1 host)
+193.180.117.34 (secondo host) ecc.
+
+193.180.117.62 (ultimo host)
+193.180.117.63 (broadcast di rete e sottorete)
+
+------------------ esercizio finale
+Ho acquistato il dominio 200.100.80.0 con netmask 255.255.255.240
+Voglio indirizzare (IPv4) 12 host in questa rete e sottorete. Come le configuro?
+
+dal valore 200 capisco che è rete di classe Classe C
+Quindi la rete è 200.100.80.0 con netmask 255.255.255.0
+
+La mia sottorete aziendale ha netmask 255.255.255.240!!!!
+tradotto
+11111111.11111111.11111111.11110000
+Gli indirizzi IPv4 del mio spazio di indirizzamento saranno quindi:
+     200.     100.      80.(00000000)
+11111111.11111111.11111111. 11110000
+quindi la mia SOTTORETE è la sottorete 0000 (zero) delle 16 possibili.
+
+Prima domanda: ho indirizzi a sufficienza per i miei 12 host della rete/sottorete?
+il mio spazio di host prevede tutte le combinazioni finali dei bit a zero nella netmask:
+sono gli ultimi 4 bit del quarto byte.
+0000 (questo host number, lo posso assegnare a una scheda di rete? NO, perchè riservato)
+0001 (questo sarebbe il primo host assegnabile... che equivale al byte 0000 (sottorete) e 0001 (host) = 00000001 = 1
+0010 (secondo host assegnabile.... 0000 0010 = 2)
+0011
+0100....
+
+1110 (ultimo host assegnabile. 0000 1110 = 14)
+1111 (broadcast della rete e sottorete = 0000 1111 = 15.
+Quindi concludendo, di numeri di host assegnabili io ho dal 1 al 14. 
+Che è maggiore o uguale alla richiesta 12.
+
+
+

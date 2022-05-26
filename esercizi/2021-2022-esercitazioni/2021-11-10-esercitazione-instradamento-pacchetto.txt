@@ -1,0 +1,131 @@
+Esercitazione in relazione alla slide Instradamento (forwarding) dei pacchetti
+
+
+Vogliamo tracciare la spedizione del pacchetto da
+140.217.00000010.00001010 (140.217.2.10) ind. mittente
+a
+130.136.00000010.00100001 (130.136.2.33) ind. destinazione
+
+Il default router della rete mittente è 140.217.2.254 (def router della subnet 2)
+
+140.217.00000010.11111110 (ind ip del default router rete 2 - mittente)
+255.255.11111111.00000000 (netmask del def router rete 2)
+140.217.00000010.-------- (risultato dell'AND *2 questa è la rete/sottorete del def router)
+Ho scritto --------- per mostrare i bit azzerati dall'AND, ma in realtà al posto di --------- vanno degli zeri.
+
+domanda 1) router: il pacchetto proviene dalla mia subnet? (domanda opzionale, a titolo di esempio)
+
+preso ind mittente del pacchetto
+140.217.00000010.00001010 (140.217.2.10) ind. mittente
+255.255.11111111.00000000 (netmask del router)
+140.217.00000010.-------- (risultato dell'AND *1)
+(*1 == *2)? SI, quindi il mittente appartiene alla subnet del router.
+
+domanda 2) quella importante!!! a chi è destinato il pacchetto?
+il pacchetto è destinato all'indirizzo
+130.136.00000010.00100001 (130.136.2.33) ind. destinazione
+255.255.11111111.00000000 (netmask del router /24)
+130.136.00000010.-------- (*3: risultato dell'AND)
+
+la rete/subnet del destinatario è == alla mia (del router)?
+tradotto: (*2 == *3)? NO. ==> quindi il pacchetto va gestito come "per tutte le altre destinazioni"!
+
+quindi passiamo la busta arancione, al default router Ry del router Ry2 (si veda la slide).
+
+QUINDI ora il pacchetto è in mano a Ry.
+Il quale fa esattamente lo stesso procedimento in quanto router.
+
+--- nelle mani di Ry (140.217.0.254) / 16
+facciamo solo la domanda 2) sulla destinazione
+2) a chi è destinato il pacchetto?
+130.136.00000010.00100001 (130.136.2.33) ind. destinazione del pacchetto
+255.255.00000000.00000000 (255.255.0.0 netmask del router Ry /16)
+130.136.--------.-------- (*4)
+
+la destinazione *4 è la rete/sottorete locale di Ry?
+140.217.0.254 / 16 (IP di Ry)
+255.255.0.0 (netmask di Ry)
+140.217.-.- (*5) (Rete e sottorete locale di Ry)
+
+(*4 == *5)? NO. quindi, va gestito da Ry "per tutte le altre destinazioni".
+
+Ma chi è la destinazione? Ry non ha Default Router, in quanto è un router della Core Network. 
+Questi router usano Tabelle di Instradamento più complesse.
+e cosa c'è scritto nella tabella di instradamento? (vedi figura).
+130.136.0.0 è la destinazione
+dall'analisi della tabella di instradamento si capisce che il pacchetto va inviato nell'interfaccia di rete di destra verso il router Rz.
+Fatto.
+
+---- siamo sul router Rz e riceviamo in busta gialla dal basso a sinistra la busta arancione del nostro pacchetto inviato.
+
+Router Rz
+190.89.0.254 /16) ind. ip del router Rz
+255.255.0.0
+190.89.0.0. /16 è la rete del router Rz (*6)
+
+destinatario del pacchetto (ricevuto, da inoltrare)
+130.136.2.33
+255.255.0.0. (netmask di Rz)
+130.136.0.0 (*7)
+domanda che si pone ora Rz? (*6 == *7)? NO, quindi procede per tutte le altre destinazioni.
+
+Rz deve guardare la tabella di instradamento, esattamente come ha fatto prima Rk nella stessa situazione.
+
+Quindi ora il router Rz analizza la tabella di instradamento e determina di inviare a Rk (verso destra).
+Fatto.
+
+-------- il pacchetto arriva a Rk da sinistra.
+
+Rk deve capire se il pacchetto è destinato alla sua rete o no.
+Rk prende il suo IP 
+130.136.0.254 /16
+255.255.0.0 (netmask di Rk)
+130.136.-.- (*8) è la rete di Rk
+il destinatario del pacchetto è l'indirizzo IP
+130.136.2.33
+255.22.0.0.
+130.136.-.- (*9) (rete del destinatario)
+Rk si chiede quindi (*8 == *9)? SI. Quindi il pacchetto è arrivato a destinazione e Rz deve ora inoltrarlo alla rete "per la città" (rete locale destinazione).
+
+Se immaginiamo che il pacchetto venga (non accade, ma se accade...) inviato in broadcast a tutti sotto, arriva a Rk1, Rk2, Rk3, ecc.
+Vediamo come ipoteticamente agirebbero i tre router Rk1, Rk2, Rk3 ricevendo il pacchetto da Rk.
+
+I router Rki faranno tutti la gestione del pacchetto.
+
+es. Rk1 con IP 
+130.136.1.254 /24 (Indirizzo di Rk1)
+255.255.255.0 (netmask di Rk1)
+130.136.1.- (*10)
+
+indirizzo destinatario del pacchetto
+130.136.2.33
+255.255.255.0 (sempre la netmask di Rk1)
+130.136.2.- (*11)
+Rk1 si chiede quindi (*10 == *11)? NO quindi non fa nulla!
+Perchè non fa nulla? perchè vede che il mittente non è della sua subnet sotto.
+Al massimo potrebbe mandarlo su al suo default router Rk.... ma in realtà non lo fa, perchè egli manderebbe su a Rk solo i pacchetti che sono nati (mittente) nella sua sottorete (di Rk1). Ecco perchè per i router serve rispondere a volte alla domanda 1).
+
+
+Vediamo invece cosa succede a Rk2...
+130.136.2.254 (indirizzo IP di Rk2)
+255.255.255.0 (netmask di Rk2)
+130.136.2.- (*12)
+
+indirizzo di destinazione del pacchetto
+130.136.2.33
+255.255.255.0 (netmask di rk2)
+130.136.2.- (*13)
+
+Rk2 si chiede (*12 == *13)? SI
+quindi il pacchetto è arrivato alla rete destinazione e viene inoltrato nella subnet sotto di Rk2 ("per la città", al destinatario di indirizzo 130.136.2.33).
+Come si invia al destinatario?
+
+Serve qui sapere l'indirizzo MAC della scheda di rete corrispondente all'indirizzo IP del destinatario 130.136.2.33.
+
+Quindi qui serve il protocollo ARP e la ARP table introdotta lezioni precedenti che vedremo tra poco in dettaglio.
+
+FINE
+
+
+
+
