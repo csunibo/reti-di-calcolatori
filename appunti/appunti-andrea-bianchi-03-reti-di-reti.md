@@ -104,7 +104,7 @@ Di solito è indicato con 4 valori decimali separati da punti, dove ogni valore 
 
 Useremo continuamente l'aritmetica binaria per manipolare gli indirizzi IP e capire cosa sta succedendo, quindi conviene saperla a menadito.
 
-[Ripasso di aritmetica binaria.pdf](assets/0.2.1-Ripasso-di-aritmetica-binaria.pdf)
+[Ripasso di aritmetica binaria.pdf](../lucidi/03-ripasso-aritmetica-binaria.pdf)
 
 ---
 
