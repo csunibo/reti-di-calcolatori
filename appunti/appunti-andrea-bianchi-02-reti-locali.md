@@ -23,7 +23,7 @@ Dal momento che i protocolli possono cambiare e aggiornarsi (magari per sistemar
 
 Ed è qui che interviene l'architettura:
 
-> 💡 Un'architettura di protocolli definisce il template sul quale vanno realizzati i protocolli di rete.
+> Un'architettura di protocolli definisce il template sul quale vanno realizzati i protocolli di rete.
 
 Alla fine è sempre solito principio di astrazione/implementazione alla base di tutta l'informatica.
 
