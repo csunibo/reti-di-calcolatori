@@ -32,7 +32,7 @@
 
 Le reti vengono classificate in base alla dimensione geografica:
 
-👨🏻‍💻 PAN << 🏠 LAN << 🏙 MAN << 🗺 WAN << 🌐 Internet
+PAN << LAN << MAN << WAN << Internet
 
 - Personal Area Network (PAN)
 
@@ -119,7 +119,7 @@ Un'infrasruttura è l'insieme dei collegamenti fra tutti i calcolatori connessi 
   ![Connessione punto a punto](assets/connessione-punto-punto.png)
 
 - **Connessione multipla completamente connessa**: connessione diretta fra più di due dispositivi
-  È una struttura molto ridondante, ogni dispositivo è connesso direttamente a tutti gli altri. Con l'aumentare del numero di dispositivi aumenta il casino da gestire 😅.
+  È una struttura molto ridondante, ogni dispositivo è connesso direttamente a tutti gli altri. Con l'aumentare del numero di dispositivi aumenta il casino da gestire.
 
   ![Connessione multipla completamente connessa](assets/connessione-multipla-completamente-connessa.png)
 
