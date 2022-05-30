@@ -117,7 +117,7 @@ Il protocollo RARP è il contrario (infatti sta per Reverse-ARP): dato un indiri
 
 ![Esempio di scambio di messaggi ARP](assets/esempio-arp.png)
 
-> 💡 Sperimentando in classe abbiamo scoperto un trucco interessante: facendo un **ping** (con l'omonima applicazione) all'indirizzo di **broadcast** ricevo in risposta la ARP table di tutte le macchine attualmente connesse. Quindi con ping posso fare un'istantanea della rete.
+> Sperimentando in classe abbiamo scoperto un trucco interessante: facendo un **ping** (con l'omonima applicazione) all'indirizzo di **broadcast** ricevo in risposta la ARP table di tutte le macchine attualmente connesse. Quindi con ping posso fare un'istantanea della rete.
 
 # Protocollo DHCP
 
