@@ -18,7 +18,7 @@
 - [**16)** Internet è una rete a commutazione di circuito? Perché?](#16-internet-è-una-rete-a-commutazione-di-circuito-perché)
 - [**17)** Descrivere almeno 3 fattori che determinano il throughput di comunicazione di una rete di calcolatori (quantità di bit di dati al secondo ricevuti con successo dal destinatario)](#17-descrivere-almeno-3-fattori-che-determinano-il-throughput-di-comunicazione-di-una-rete-di-calcolatori-quantità-di-bit-di-dati-al-secondo-ricevuti-con-successo-dal-destinatario)
 - [**18)** Quali tecnologie di rete locale tra quelle viste a lezione usano un canale di comunicazione ad accesso multiplo (broadcast)?](#18-quali-tecnologie-di-rete-locale-tra-quelle-viste-a-lezione-usano-un-canale-di-comunicazione-ad-accesso-multiplo-broadcast)
-- [**19)** Meglio una rete che invia 10 Mb/s con un ritardo di 1 secondo o una rete che invia 1Mb/s con un ritardo di 100 ms? Motivare la risposta.](#19-meglio-una-rete-che-invia-10-mbs-con-un-ritardo-di-1-secondo-o-una-rete-che-invia-1mbs-con-un-ritardo-di-100-ms-motivare-la-risposta)
+- [**19)** Meglio una rete che invia 10 Mb/s con un ritardo di 1 secondo o una rete che invia 1Mb/s con un ritardo di 100 ms? Motivare la risposta](#19-meglio-una-rete-che-invia-10-mbs-con-un-ritardo-di-1-secondo-o-una-rete-che-invia-1mbs-con-un-ritardo-di-100-ms-motivare-la-risposta)
 - [**20)** Quali componenti gestiscono la comunicazione di rete IPv4 a livello Rete (3)? Quali compiti assolvono?](#20-quali-componenti-gestiscono-la-comunicazione-di-rete-ipv4-a-livello-rete-3-quali-compiti-assolvono)
 - [**21)** Il protocollo UDP si differenzia da TCP? Come? A quale livello sono implementati](#21-il-protocollo-udp-si-differenzia-da-tcp-come-a-quale-livello-sono-implementati)
 - [**22)** A quale classe appartengono i seguenti indirizzi IPv4?](#22-a-quale-classe-appartengono-i-seguenti-indirizzi-ipv4)
@@ -38,7 +38,6 @@
 
 ## **1)** Dato l'indirizzo IP 130.136.128.128 con maschera di rete 255.255.128.0 quante sottoreti sono individuate e a quale sottorete appartiene l'indirizzo suddetto?
 
-
 130.136.128.128 si esprime in binario come:
 
 `10000010 10001000 10000000 10000000`
@@ -51,7 +50,6 @@ da qui si vede che la rete di classe B `130.136.x.y` viene estesa con un solo bi
 
 ## **2)** A quale sottorete appartiene l’indirizzo IPv4: 130.136.9.1 se la maschera di rete è 255.255.248.0? (suggerimento: 248 è pari a 128+64+32+16+8)
 
-
 scriviamo in binario `130.136.9.1`
 
 `10000010 10001000 00001001 00000001`
@@ -62,14 +60,11 @@ scriviamo in binario `255.255.248.0`
 
 Quindi il nostro indirizzo apparterra' alla sottorete 00001 -> 1 della rete di classe B
 
-
 ## **3)** Come si esprime 37 in binario?
 
 `0100101`
 
-
 ## **4)** quale numero di host ha la macchina con indirizzo IPv4 130.136.249.0 / 23 se utilizzo la notazione CIDR per esprimere la sottorete a cui appartiene (indicando /23)?
-
 
 La macchina ha indirizzo ip
 
@@ -84,7 +79,6 @@ Quindi sara' nella sottorete 1111100 -> 124 della rete di classe B
 e avra' numero di host
 
 `1 00000000 -> 256`
-
 
 ## **5)** E se l’indirizzo IP della domanda precedente fosse stato 250.129.9.132 con maschera CIDR /25?
 
@@ -207,22 +201,23 @@ Per valutare i router piu congestionati, sicuramente quelli che non hanno rispos
 
 ## **14)** Come disegnereste la topologia di una rete locale, basata su tecnologia Ethernet, che permetta di connettere 1 Router/ADSL verso Internet (con due schede di rete) per fornire accesso a 64 PC (ognuno con una sola scheda di rete) suddivisi equamente in 3 laboratori diversi dello stesso edificio, e tre stampanti di rete IPv4, in modo che ogni laboratorio abbia accesso alla propria stampante di rete sul proprio segmento di rete locale Ethernet, un mail server, un firewall e un antivirus server, e avendo a disposizione per l'acquisto solo Hub a 4 porte (costo 30 Euro) e Switch a 24 porte (costo 300 Euro)? Considerate separatamente aspetti di efficienza, affidabilità, prestazioni e costo totale.
 
-```
+```ascii
 # TODO
 ```
 
 ## **15)** Immaginate di possedere una rete di classe A di indirizzo 20.0.0.0 e supponete di volere progettare l'assegnazione e configurazione degli indirizzi IPv4 su una rete come quella disegnata in figura. Progettate il subnetting della rete (definire le sottoreti) in modo che siano sprecati il minor numero possibile di indirizzi IP, e garantendo la gerarchia della rete secondo lo schema dei router sotto indicati. Completare lo schema con le informazioni di configurazione IPv4 di ogni router e degli host client (a campione) sotto indicati.
 
 ![immagine domanda 15](immagine-domanda-15.png)
-```
+
+```ascii
 # TODO
 ```
 
 ## **16)** Internet è una rete a commutazione di circuito? Perché?
 
-```
-# TODO
-```
+No, internet e' una rete a commutazione di pacchetto, questo perche' la commutazione di pacchetto permette un utilizzo decisamente piu scalabile, infatti sappiamo che la commutazione di pacchetto, per come e' strutturata, ci da la possibilita' di avere molte piu connessioni simultanee sullo stesso canale, ed in generale di ridurre il ritardo di comunicazione nel caso di reti tanto estese come internet, poi ci da la possibilita' di implementare protocolli di varia natura al variare del servizio, e infine e' molto piu stabile in caso di architetture eterogenee ed in continuo cambiamento, per esempio nel caso dei telefoni che passano da una rete all'altra, o nel caso di comunicazioni su diversi tipi di canali con dispositivi differenti da un capo all'altro della comunicazione. Un altro vantaggio della stabilita' con reti mutevoli e' la resistenza ai guasti, infatti tramite la commutazione di pacchetto nel caso di guasto di un canale di comunicazione, il rimedio e' immediato in quanto basta far passare i pacchetti su un altro canale (sempre che esista), mentre con la commutazione di circuito si deve ristabilire una connessione, e si hanno sicuramente molte piu difficolta e rallentamenti.
+
+N.B. Ci sono tante cose da dire a riguardo, penso che quello che ho scritto sopra basti comunque per una domanda d'esame.
 
 ## **17)** Descrivere almeno 3 fattori che determinano il throughput di comunicazione di una rete di calcolatori (quantità di bit di dati al secondo ricevuti con successo dal destinatario)
 
@@ -233,13 +228,13 @@ Per valutare i router piu congestionati, sicuramente quelli che non hanno rispos
 
 ## **18)** Quali tecnologie di rete locale tra quelle viste a lezione usano un canale di comunicazione ad accesso multiplo (broadcast)?
 
-- Wireless
-- Bus 
+- hub
 
-## **19)** Meglio una rete che invia 10 Mb/s con un ritardo di 1 secondo o una rete che invia 1Mb/s con un ritardo di 100 ms? Motivare la risposta.
-```
-# TODO
-```
+## **19)** Meglio una rete che invia 10 Mb/s con un ritardo di 1 secondo o una rete che invia 1Mb/s con un ritardo di 100 ms? Motivare la risposta
+
+Dipende dall'utilizzo che viene fatto della rete, nel caso in cui si ha la necessita' di avere un feedback quasi in tempo reale e la quantita di throughput medio non gioca un ruolo fondamentale,  (come nel caso dei videogiochi online o delle app di chiamate internet come skype o discord) sicuramente la seconda opzione e' quella migliore, mentre nel caso di necessita' di un grande passaggio di dati, con scarsa necessita' di un feedback istantaneo (come ad esempio nelle app di streaming video come netflix o youtube), la prima opzione risulta migliore.
+
+N.B. Ci sono tante cose da dire a riguardo, penso che quello che ho scritto sopra basti comunque per una domanda d'esame.
 
 ## **20)** Quali componenti gestiscono la comunicazione di rete IPv4 a livello Rete (3)? Quali compiti assolvono?
 
@@ -248,101 +243,145 @@ Per valutare i router piu congestionati, sicuramente quelli che non hanno rispos
 ```
 
 ## **21)** Il protocollo UDP si differenzia da TCP? Come? A quale livello sono implementati
-```
-# TODO
-```
+
+I protocolli UDP e TCP sono implementati a livello di trasporto. Il protocollo UDP si preoccupa solo di far arrivare i dati il piu velocemente possibile fino al mittente, senza effettuare alcun tipo di controllo sui dati o sul canale di connessione, ed e' utile nel caso in cui si necessita di un alta quantita di throughput e non si ha la necessita di avere un passaggio di dati preciso, mentre il protocollo TCP e' orientato alla connessione: implementa un controllo della congestione e della corretta ricezione dei dati.
+
+N.B. Ci sono tante cose da dire a riguardo, penso che quello che ho scritto sopra basti comunque per una domanda d'esame.
+
 ## **22)** A quale classe appartengono i seguenti indirizzi IPv4?
 
-```
-- 140.140.140.140
-- 120.120.120.120
-- 191.191.191.191
-```
+Per rispondere convertiamo in binario il primo byte, e guardiamo i primi tre bit, se inizia con 0 allora e' di classe A, se inizia con 10 allora e' di classe B, altrimenti e' di classe C
+
+- 140.140.140.140 -> `10001100` -> Classe B
+- 120.120.120.120 -> `01111000` -> Classe A
+- 191.191.191.191 -> `10111111` -> classe B
 
 ## **23)** sono equivalenti il controllo di flusso e il controllo di congestione in TCP? Da quali fattori sono governati?
-```
-# TODO
-```
+
+No, il controllo di flusso si occupa di verificare che un ricevitore piu lento non venga sopraffatto dalla quantita di dati inviata da un mittente piu veloce, mentre il controllo di congestione regola il traffico in ingresso ed uscita dei pacchetti, in modo da evitare una congestione totale della rete mantenendo uno scambio ottimale di dati, aumentando o diminuendo la frequenza con la quale i dati vengono inviati al mittente.
 
 ## **24)** Un calcolatore può essere connesso a Internet senza disporre di una maschera di rete e di un DNS server? E nel caso di una connessione wireless a Internet?
-```
-# TODO
-```
+
+> WIP: non lo so, credo che la prima parte sia giusta.
+
+Riguardo il DNS server, tecnicamente ti puoi connettere ad internet ma chiaramente non hai la capacita di interpretare i domini di rete (sempre che ti serva)
+
+**WIP maschera di rete**
+
+Nel caso di una connessione wireless a internet non dovrebbe cambiare.
 
 ## **25)** A cosa serve il protocollo ICMP? Quali applicazioni viste a lezione si basano su tale protocollo?
-```
-# TODO
-```
+
+Il protocollo ICMP serve per effettuare diagnostiche di rete, e scambiare messaggi di stato ed errori all'interno delle reti. Abbiamo visto che puo essere utilizzato da applicazioni come ad esempio **ping** e **traceroute** per effettuare delle diagnostiche.
 
 ## **26)** Quali di queste sono maschere di rete legali? (suggerimento: considerare anche il valore in binario)
 
-```
-- 255.0.0.0
-- 254.255.0.0
-- 255.254.0.0
-- 255.193.0.0
-- 255.128.0.0
-- /23
-- /24
-- /25
-- /26
-- /30
-- /31
-- /32
-- /33
-- 0.0.0.255
-- 10.0.0.0
-- 11111100.0.0.0
-- FF.FB.00.00
-```
+Una maschera di rete e' legale quando scritta in binario e' composta da una sequenza di uno seguita da una sequenza di zero, e scritta normalmente e' o nello stesso formato di un indirizzo ip, o nella notazione cidr uno / seguito da un numero minore di 33 e maggiore di 8
+
+- 255.0.0.0 -> si
+- 254.255.0.0 -> no, non e' una sequenza di 1 seguita da 0
+- 255.254.0.0 -> si
+- 255.193.0.0 -> no, non e' una sequenza di 1 seguita da 0
+- 255.128.0.0 -> si
+- /23 -> si
+- /24 -> si
+- /25 -> si
+- /26 -> si
+- /30 -> si
+- /31 -> si
+- /32 -> si
+- /33 -> no, e' maggiore di 31
+- 0.0.0.255 -> no, non e' una sequenza di uno seguita da 0 ma il contrario
+- 10.0.0.0 -> no, non e' una maschera di rete plausibile perche' il primo byte e' diverso da 255.
+- 11111100.0.0.0 -> no, il primo numero e' troppo grande
+- FF.FB.00.00 -> no, gli esadecimali non sono interpretati
 
 ## **27)** Che utilità ha il meccanismo RTS/CTS nelle reti 802.11?
-```
+
+```ascii
 # TODO
 ```
 
 ## **28)** a quale sottorete appartiene l’indirizzo IPv4: 180.17.225.5 se la maschera di rete è 255.255.240.0? (suggerimento: 240 è pari a 128+64+32+16)
-```
+
+`180.17.225.5` in binario:
+
+`10110100 00010001 11100001 00000101`
+
+`255.255.240.0` in binario:
+
+`11111111.11111111.11110000.00000000`
+
+La rete e' di classe B perche' il primo byte inizia con 10, quindi guardiamo i bit dal terzo byte, vediamo che inizia con quattro 1, dunque prendiamo i primi quattro bit del terzo byte dell'indirizzo ip (`1110`), che in decimale valgono 14, dunque sappiamo che siamo nella sottorete 14
+
 - sottorete 225 della rete di classe B 180.17
 - sottorete 225 della rete di classe C 180.17
 - sottorete 17 della rete di classe C 180.17.255
 - sottorete 224 della rete di classe B 180.17
-- sottorete 14 della rete di classe B 180.17
+- **sottorete 14 della rete di classe B 180.17** <- giusta
 - nessuna delle precedenti
-```
+
 
 ## **29)** Come si esprime 97 in binario?
-```
-# TODO
-```
+
+64+32+1
+
+`1100001`
 
 ## **31)** Quali sono il primo e l'ultimo indirizzo IPv4 utile per la sottorete 130.136.249.0? e a quali sottoreti apparterrebbero gli host ai quali fossero attribuiti i due indirizzi suddetti se la maschera di rete fosse /22?
-```
-# TODO
-```
+
+`130.136.249.0` in binario:
+
+`10000010 10001000 11111001 00000000`
+
+Assumiamo che la maschera di rete sia /24, dunque il primo indirizzo indirizzabile sarebbe `130.136.249.0` e l'ultimo indirizzo indirizzabile sarebbe `130.136.249.255`, ma dato che 0 non lo usiamo, 255 viene usato per il broadcast e 254 per il router, partiamo da `130.136.249.1` a `130.136.249.253`.
+
+Nel caso la maschera di rete fosse /22, allora tecnicamente potremmo indirizzare da `130.136.248.0` a `130.136.251.255`, ma escludendo come prima lo 0, router e broadcast, abbiamo indirizzi da `130.136.248.1` a `130.136.251.253`
 
 ## **32)** Quanti host puo contenere la rete di cui e' router il nodo 190.12.32.47/23? E se la maschera di rete fosse 255.255.255.0? E se la maschera di rete fosse 255.255.255.128?
-```
-# TODO
-```
+
+`190.12.32.47` in binario:
+
+`10111110 00001100 00100000 00101111`
+
+`255.255.255.128` in binario:
+
+`11111111 11111111 11111111 10000000`
+
+Allora abbiamo 9 bit dopo la maschera di rete, dunque puo contenere 2^9 - 1 (router) - 1 (broadcast) - 1(0)=509 host.
+
+Nel caso in cui la maschera di rete fosse `255.255.255.128`, allora avremmo 2^7 - 1 (router) - 1 (broadcast) - 1(0) = 125 host.
+
 ## **33)** Sono disponibili indirizzi IPv4 a partire da 130.136.17.0 e si vogliono attribuire indirizzi IPv4 a 3 diversi domini di rete X, Y, K composti rispettivamente da 100, 60, e 10 indirizzi, sprecandone il meno possibile. Come possono essere identificate le sottoreti X,Y,K e quali sono gli indirizzi di rete e di broadcast per ognuna di loro?
 
-```
-# TODO
-```
+`130.136.17.0` in binario
+
+`10000010 10001000 00010001 00000000`
+
+L'host X necessita' di 100 indirizzi ip, dunque utilizzeremo come netmask una 
 
 ## **34)** In quali modalita si puo configurare il funzionamento di un access point WI-FI 802.11?
 
 ```
 # TODO
 ```
+
 ## **35)** A quale sottorete appartiene l’indirizzo IPv4: 130.136.17.1 se la maschera di rete è 255.255.240.0? (suggerimento: 240 è pari a 128+64+32+16) (scrivere il procedimento sotto)
 
-```
-# TODO
-```
+`130.136.17.1` in binario
+
+`10000010 10001000 00010001 00000001`
+
+`255.255.240.0` in binario
+
+`11111111.11111111.11110000.00000000`
+
+allora apparterra' alla sottorete `0001` -> 1
 
 ## **36)** Quale numero di host ha la macchina con indirizzo IPv4 130.136.247.2 / 22 se utilizzo la notazione CIDR per esprimere la sottorete a cui appartiene (indicando /22)? (scrivere il procedimento sotto). E a quale sottorete appartiene l’host, nella rete di classe B 130.136.x.y, se uso maschera di rete /22?
-```
-# TODO
-```
+
+`130.136.247.2` in binario
+
+`10000010 10001000 11110111 00000010`
+
+Avendo 10 bit liberi dalla maschera di rete, il numero di host della nostra macchina sara' `11 00000010` -> 770
