@@ -246,9 +246,9 @@ N.B. Ci sono tante cose da dire a riguardo, penso che quello che ho scritto sopr
 
 ## **20)** Quali componenti gestiscono la comunicazione di rete IPv4 a livello Rete (3)? Quali compiti assolvono?
 
-```
-# TODO
-```
+I componenti che gestiscono la comunicazione a livello di rete sono ICMP, ARP, RARP e DHCP. Partendo da ICMP, questo svolge il compito di scambiare messaggi di controllo e di errore, quindi e' utile per effettuare diagnostiche e verifiche riguardo problemi di rete. ARP e RARP si occupano invece di ottenere l'indirizzo MAC dall'indirizzo IP e viceversa, quindi sono necessari per la comunicazione dei pacchetti. DHCP e' necessario per assegnare indirizzi IP a macchine che ancora non lo posseggono.
+
+N.B. Ci sono tante cose da dire a riguardo, penso che quello che ho scritto sopra basti comunque per una domanda d'esame.
 
 ## **21)** Il protocollo UDP si differenzia da TCP? Come? A quale livello sono implementati
 
