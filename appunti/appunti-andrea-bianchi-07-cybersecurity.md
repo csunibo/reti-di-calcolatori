@@ -107,4 +107,58 @@ Per mitigare questa casistica le CA sono a loro volta certificate da altre CA, c
 
 # E-mail sicure
 
-Riprendi da slide 56
+Supponiamo che Alice voglia mandare una mail confidenziale a Bob.
+Come abbiamo visto, i passaggi che Alice dovrebbe seguire sono:
+
+- Generare delle chiavi simmetriche casuali $K_S$;
+- Cifrare i messaggi con le chiavi $K_S$;
+- Cifrare $K_S$ con la chiave pubblica di Bob $K_B$;
+- Inviare a Bob sia il messaggio cifrato $K_S(m)$ che la chiave cifrate $K_B(K_S)$.
+
+A questo punto Bob con la sua chiave privata può decifrare la chiave simmetrica e usarla a sua volta per decifrare il messaggio mandato da Alice.
+
+Come abbiamo visto la cifratura non basta, Alice quindi vuole anche firmare il messaggio in modo che Bob sappia che proviene da lei e nessun altro.
+In sostanza Alice vuole che la comunicazione abbia le proprietà di: security, sender authentication, message integrity.
+
+Per ottenere ciò Alice userà quindi 3 chiavi: la chiave simmetrica $K_S$ per cifrare il messaggio, la chiave pubblica di Bob $K_B$ per cifrare la chiave simmetrica e infine la propria chiave privata $K_A$ per firmare il messaggio, usando quindi tutte le tecniche che abbiamo visto prima.
+
+# Rendere sicure le connessioni TCP: SSL
+
+Per garantire integrità, sicurezza e autenticazione agli applicativi web che fanno uso del protocollo TCP la tecnologia più usata è **SSL (Secure Socket Layer)**.
+
+SSL è disponibile per tutte le applicazioni che fanno uso di TCP: si pone fra l'applicazione ed il protocollo TCP e fornisce le API per rendere sicura una connessione.
+
+SSL utilizza 4 chiavi per realizzare una comunicazione: la chiave di cifratura del client, la chiave **MAC (message authentication code)** del client, la chiave di cifratura del server e la chiave MAC del server. la chiave MAC viene usata per l'appunto per autenticare i messaggi scambiati.
+
+La tecnologia SSL prevede un **Handshake** per iniziare la conversazioen.
+
+Durante l'handshake si autentica il server, viene negoziato un accordo sull'algoritmo di cifratura da usare, si generano le chiavi e (opzionale) si autentica il client.
+
+Nello specifico il client fornisce al server una lista di algoritmi di cifratura che può usare e il server restituirà al client l'algoritmo scelto e il certificato.
+Il client quindi verifica il certificato del server, prende la chiave pubblica del server e cifra il pre_master_secret che poi invia al server.
+A questo punto sia client che server useranno il pre_master_secret per generare le chiavi di cifratura e MAC ed entrambi aggiungeranno il MAC per tutti i successivi messaggi dela fare handshake.
+
+![Schema SSL](assets/schema-ssl.png)
+
+# Rendere sicuro il livello rete: IPsec
+
+Rendere sicuro il livello network ha senso per proteggere tutta una serie di dati: dalle pagine web alle email, ai messaggi ICMP.
+
+Fra le varie tecniche per proteggere la comunicazione a livello rete ci sono: VPN e IPsec
+
+## Le VPN
+
+Sono usate (ad esempio) dalle imprese e dalle istituzioni per fornire una rete protetta ai dipendenti. Sono costose da realizzare in quanto bisogna predisporre dei router appositi e una infrastruttura DNS.
+
+In pratica le VPN permettono di gestire il traffico 'inner-office' usando la rete internet pubblica, in quanto tutte le comunicazioni sono cifrate prima di accedere ad internet e sono logicamente separate dall'altro traffico.
+
+## IPsec
+
+I servizi IPsec forniscono le solite proprietà di integrità dei dati, autenticazione, protezione dai playback attack e confidenzialità della conversazione.
+
+IPsec è fornita da due protocolli: AH e ESP.
+
+- **Authentication Header (AH)** fornisce autenticazione della provenienza e integrità dei dati ma non la confidenzialità
+- **Encapsulation Security Protocol (ESP)** fornisce anche la confidenzialità ed infatti è più usato di AH.
+
+SLIDE 90
