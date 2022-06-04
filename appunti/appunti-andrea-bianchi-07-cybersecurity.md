@@ -161,4 +161,40 @@ IPsec è fornita da due protocolli: AH e ESP.
 - **Authentication Header (AH)** fornisce autenticazione della provenienza e integrità dei dati ma non la confidenzialità
 - **Encapsulation Security Protocol (ESP)** fornisce anche la confidenzialità ed infatti è più usato di AH.
 
-SLIDE 90
+### Security Associations (SA)
+
+Vengono realizzate all'inizio della comunicazione fra il mittente ed il destinatario, entrambi conservano informazioni sullo stato della SA, in questo modo si passa da un protocollo connectionless, IP, ad uno connection-oriented, IPsec.
+
+Le SA sono usate assieme ad esempio alle VPN per stabilire una connessione sicura fra due entità (ad esempio un computer di un azienda che acceda dall'esterno della rete aziendale), in quanto fra le altre cose permettono di conservare le informazioni sul tipo di algoritmo di cifratura accordato, sugli identificatori usati e sulle chiavi di autenticazione e cifratura.
+
+Solitamente gli endpoint conservano le informazioni in dei database chiamati SAD.
+
+## Internet Key Exchange (IKE)
+
+IKE è un servizio che si usa per lo scambio di chiavi di cifratura/autenticazione quando non è possibile eseguire il processo a mano (ad esempio per gestire VPN con centinaia di endpoints).
+
+IKE gestisce l'autenticazione tramite o chiavi condivise a monte (PSK, pre shared keys) o tramite il meccanismo di chiave pubblica e certificazione.
+
+IKE opera in due fasi:
+
+1. Nella prima fase viene stabilita la SA bi-direzionale, conosciuta come ISAKMP security association;
+2. Nella seconda fase ISAKMP viene usata per negoziare in modo sicuro le coppie di SA usate per IPsec.
+
+## Riassumendo
+
+IPsec usa essenzialmente due tecnologie per gestire la comunicazione:
+
+- IKE per stabilire gli algoritmi di cifratura, scambiare le chiavi e i numeri SPI;
+- AH o ESP per fornire integrità, autenticazione e confidenzialità alla conversazione.
+
+Gli Alice e Bob di una conversazione IPsec possono essere due end systems, due router/firewall oppure un end system ed un router/firewall.
+
+# Mettere al sicuro le reti locali (LAN)
+
+Per evitare che una persona esterna manometta o osservi le comunicazioni all'interno di una rete locale sono stati nel tempo ideati diversi algoritmi.
+
+## WEP
+
+L'algoritmo WEP è pensato per utilizzare un sistema di cifratura simmetrica, per essere self-synchronizing (ovvero ogni pacchetto è cifrato autonomamente senza per questo rischiare di non accorgersi di aver perso un pacchetto) e per essere efficiente ed implementabile sia tramite hardware che software.
+
+SLIDE 108
