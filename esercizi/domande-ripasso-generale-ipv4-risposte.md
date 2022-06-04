@@ -201,17 +201,25 @@ Per valutare i router piu congestionati, sicuramente quelli che non hanno rispos
 
 ## **14)** Come disegnereste la topologia di una rete locale, basata su tecnologia Ethernet, che permetta di connettere 1 Router/ADSL verso Internet (con due schede di rete) per fornire accesso a 64 PC (ognuno con una sola scheda di rete) suddivisi equamente in 3 laboratori diversi dello stesso edificio, e tre stampanti di rete IPv4, in modo che ogni laboratorio abbia accesso alla propria stampante di rete sul proprio segmento di rete locale Ethernet, un mail server, un firewall e un antivirus server, e avendo a disposizione per l'acquisto solo Hub a 4 porte (costo 30 Euro) e Switch a 24 porte (costo 300 Euro)? Considerate separatamente aspetti di efficienza, affidabilità, prestazioni e costo totale.
 
-```ascii
-# TODO
-```
+Una topologia plausibile e' con il router direttamente connesso ad internet (non e' chiaro come possa essere utile avere due schede di rete), da li utilizziamo uno switch per dividere le 3 sottoreti, di cui due sottoreti avranno 21 host e la terza sottorete ne avra' 22. Sotto lo switch connettiamo 3 hub, ma tra l'hub e lo switch connettiamo un firewall per sottorete. Non e' chiaro cosa sia un "antivirus server", ma se e' simile ad un firewall come credo, va messo tra il firewall e l'hub principale di ogni sottorete. Nell'hub principale mettiamo mail server, stampante, e connettiamo altri due hub. Sotto il primo dei due hub connettiamo 4 hub (ed in ognuno di quelli connettiamo un host, quindi abbiamo gia' 16 host connessi alla sottorete), poi nel secondo hub connettiamo un altro hub (ed anche in questo hub connettiamo 4 host, quindi siamo a 20) e abbiamo la possibilita' di connettere altri 3 host, nel caso della sottorete da 21 host ne bastera' uno, e rimarranno 2 porte disponibili, mentre nella sottorete con 22 host ne basteranno due, e rimarra' una porta disponibile. Ogni sottorete utilizza quindi 8 hub (quindi 24 hub totali), e poi utilizziamo uno switch, per un totale di 1020 euro per le tecnologie di rete. Con questa topologia riusciamo ad "isolare" le sottoreti, e come ci e' stato chiesto abbiamo un firewall per sottorete quindi riusciamo a configurarli in maniera "custom" in caso di utilizzi differenti della rete. L'unico aspetto non troppo comodo e' il fatto che cosi facendo le richieste vengono inviate in broadcast tra tutti gli host della sottorete, un modo per risolvere questo problema sarebbe utilizzare uno switch al posto della struttura di hub che abbiamo creato, ma cosi facendo nella rete da 22 host servirebbe anche un hub per estendere le richieste dato che non basterebbero le porte.
+
+N.B. Se qualcuno riesce a disegnarlo con la tavoletta grafica e inserirlo fa un favore a tutti gli studenti :)
 
 ## **15)** Immaginate di possedere una rete di classe A di indirizzo 20.0.0.0 e supponete di volere progettare l'assegnazione e configurazione degli indirizzi IPv4 su una rete come quella disegnata in figura. Progettate il subnetting della rete (definire le sottoreti) in modo che siano sprecati il minor numero possibile di indirizzi IP, e garantendo la gerarchia della rete secondo lo schema dei router sotto indicati. Completare lo schema con le informazioni di configurazione IPv4 di ogni router e degli host client (a campione) sotto indicati.
 
 ![immagine domanda 15](immagine-domanda-15.png)
 
-```ascii
-# TODO
-```
+|nome|netmask|primo ip|ultimo ip|router|gateway|host sprecati|
+|--|--|--|--|--|--|--|
+|B2|/25|20.0.0.1|20.0.0.125|20.0.0.126|20.0.0.254|1|
+|B1|/29|20.0.0.129|20.0.0.133|20.0.0.134|20.0.0.254|1|
+|B|/24|20.0.0.1|20.0.0.253|20.0.0.254|20.0.1.254|118|
+|A2|/26|20.0.1.1|20.0.1.61|20.0.1.62|20.0.1.126|32|
+|A1|/27|20.0.1.65|20.0.1.93|20.0.1.94|20.0.1.126|15|
+|A|/25|20.0.1.1|20.0.1.125|20.0.1.126|20.0.1.254|30|
+|firewall|/23|20.0.0.1|20.0.1.253|20.0.1.254|__ |126|
+
+Le prime due reti hanno solo un host di scarto, per una implementazione piu elastica sarebbe meglio estendere gli host alla potenza di due successiva e far scalare tutti gli indirizzi ip. La scelta dipende dal tipo di rete e dal suo utilizzo.
 
 ## **16)** Internet è una rete a commutazione di circuito? Perché?
 
