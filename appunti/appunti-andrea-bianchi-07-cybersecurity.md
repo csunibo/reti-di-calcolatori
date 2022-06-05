@@ -197,4 +197,51 @@ Per evitare che una persona esterna manometta o osservi le comunicazioni all'int
 
 L'algoritmo WEP è pensato per utilizzare un sistema di cifratura simmetrica, per essere self-synchronizing (ovvero ogni pacchetto è cifrato autonomamente senza per questo rischiare di non accorgersi di aver perso un pacchetto) e per essere efficiente ed implementabile sia tramite hardware che software.
 
-SLIDE 108
+Il protocollo prevede che il mittente:
+
+- Calcoli l'ICV (Integrity Check Value), un hash di 4 byte, sui dati inviati;
+- I due comunicanti hanno una chiave condivisa di 104 bit;
+- Crei un vettore di inizializzazione (IV) di 24 bit e lo aggiunge alla chiave, ottenendo così una chiave di 128 bit;
+- Aggiunga anche una chiave identificativa di 8 bit;
+- La precedente chiave di 128 bit viene data in input ad un generatore di numeri random per ottenere il keystream;
+- I dati del frame e la ICV vengono cifrati con l'algoritmo RC4 e poi il payload viene mandato al destinatario.
+
+Il destinatario dal canto suo:
+
+- Estrae il vettore di inizializzazione;
+- Usa l'IV e la chiave condivisa come input per un generatore pseudo casuale per ottenere il keystream;
+- Con uno XOR fra il keystream e i dati cifrati si decifrano i dati e il ICV;
+- L'integrità dei dati viene verificata con l'ICV e la comunicazione può dirsi conclusa.
+
+### Perché non si usa più WEP
+
+WEP non è più uno standard sicuro a causa di un security hole che è parte del protocollo stesso:
+dal momento che l'IV è composto di soli 24 bit e dato che ne viene utilizzato uno per ogni frame scambiato, prima o poi si riutilizzeranno gli stessi IV e, dato che l'IV viene inviato in chiaro, è facile per Trudy capire quando un IV viene riutilizzato.
+
+Non appena Trudy identifica un IV riutilizzato può usare il dato per calcolare la chiave condivisa. Facendo questa operazione per tutti gli IV riutilizzati che trova Trudy è in grado di risalire a tutte le chiavi condivise e, la volta successiva, intercettare e decifrare i pacchetti.
+
+Ormai è sconsigliato utilizzare WEP, lo standard di riferimento attuale è WPA2.
+
+# I Firewall
+
+I firewall isolano una rete da internet permettendo l'ingresso solo di pacchetti selezionati.
+Sono molto utili per prevenire gli attacchi DoS, per impedire l'accesso e la modifica illegali di dati interni, permettere solo alle entità autorizzate di accedere al network.
+
+I firewall possono essere di tre tipi:
+
+- **Stateless packet filtering**
+
+  I dispositivi interni sono connessi ad internet mediante il firewall del router, il quale filtra ogni pacchetto decidendo se farlo passare o meno (la decisione viene presa in base agli indirizzi IP, alle porte TCP o UDP e ai messaggi ICMP contenuti nei pacchetti);
+
+  Esempio: il router blocca tutti i segmenti TCP interni contenenti ACK=0, con il risultato che nessun computer esterno possa connettersi come client ad uno interno, ma tutti i computer interni possono connettersi a server esterni;
+
+- **Stateful packet filtering**
+
+  A differenza dell'approccio stateless, in questo tipo di firewall viene tracciato lo status di ogni connessione TCP per capire quali pacchetti in transito abbiano senso (se una connessione è stata buttata formalmente giù non ha senso far transitare altri pacchetti in seguito);
+
+- **Application gateways**
+
+  Questo tipo di firewall filtra i pacchetti basandosi sui dati delle applicazioni e sui campi IP/TCP/UDP.
+
+I firewall però non sono infallibili: sono suscettibili ad attacchi di IP spoofing (non hanno modo di verificare che l'IP che proclama il pacchetto sia effettivamente il suo).
+Inoltre non sono strumenti senza compromessi: per godere del livello di protezione garantito dai firewall bisogna rinunciare ad un certo grado di comunicazione con il mondo esterno.
