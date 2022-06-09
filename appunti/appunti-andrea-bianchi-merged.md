@@ -594,7 +594,7 @@ Al contrario del subnetting c'è il supernetting, ovvero raggruppare più reti i
 
 ## Esercizi da esame
 
-[Subnetting e netmask](https://www.notion.so/Subnetting-e-netmask-982f381f3d9f44c683350ff7cc29355d)
+[Subnetting e netmask](../esercizi/2021-2022-esercitazioni/appunti-andrea-bianchi-subnetting-netmask.md)
 
 # Notazione CIDR - Classless Inter Domain Routing
 
@@ -616,7 +616,7 @@ Il forwarding è il processo di instradamento dei pacchetti dal mittente verso l
 
 Lo abbiamo affrontato tramite un esempio:
 
-[Forwarding dei pacchetti](https://www.notion.so/Forwarding-dei-pacchetti-f4f175479b1e444b9fd866c343b8d655)
+[Forwarding dei pacchetti](../esercizi/2021-2022-esercitazioni/appunti-andrea-bianchi-forwarding-pacchetti.md)
 
 # Routing
 

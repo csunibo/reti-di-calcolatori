@@ -6,7 +6,7 @@ Il forwarding è il processo di instradamento dei pacchetti dal mittente verso l
 
 Lo abbiamo affrontato tramite un esempio:
 
-[Forwarding dei pacchetti](https://www.notion.so/Forwarding-dei-pacchetti-f4f175479b1e444b9fd866c343b8d655)
+[Forwarding dei pacchetti](../esercizi/2021-2022-esercitazioni/appunti-andrea-bianchi-forwarding-pacchetti.md)
 
 # Routing
 
