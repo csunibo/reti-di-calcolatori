@@ -104,7 +104,7 @@ Specificare a quale rete/sottorete appartiene `193.180.117.42` e quale è il suo
   - ...
   - 11000001.10110100.01110101.001`11110` - host 30, ultimo byte = 62;
   - 11000001.10110100.01110101.001`11111` - host number tutto a 1 indica il broadcast di sottorete, valore dell'ultimo byte = 63.
-  In decimale:
+    In decimale:
   - `193.180.117.32` - la sottorete;
   - `193.180.117.33` - host 1;
   - `193.180.117.34` - host 2;
@@ -124,7 +124,7 @@ Come devono essere configurate?
   È una rete di **classe C**; lo capisco dal valore 200 del primo byte.
 - Qual è quindi lo spazio di indirizzamento?
   Essendo una rete di classe C, vuol dire che la rete è la `200.100.80.0` con netmask naturale `255.255.255.0`.
-  Attenzione, la rete aziendale invece ha netmask `255.255.255.240`❗️
+  Attenzione, la rete aziendale invece ha netmask `255.255.255.240`
   Tradotto in binario la netmask è:
   `11111111.11111111.11111111.11110000`.
   Gli indirizzi IPv4 del mio spazio di indirizzamento saranno quindi:
@@ -141,8 +141,8 @@ Come devono essere configurate?
   - ...
   - 1110 - ultimo host assegnabile, `000001110` = **14**;
   - 1111 - broadcast della sottorete.
-  Quindi posso assegnare numeri di host dal 1 al 14.
-  Quindi riesco a soddisfare la richiesta di connettere 12 host.
+    Quindi posso assegnare numeri di host dal 1 al 14.
+    Quindi riesco a soddisfare la richiesta di connettere 12 host.
 
 # Es. 5 - Calcolo maschera di rete e sottorete
 

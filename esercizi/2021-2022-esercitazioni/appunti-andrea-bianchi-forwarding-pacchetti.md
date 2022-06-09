@@ -88,7 +88,7 @@ Chiaramente no, quindi spediamo il pacchetto al livello superiore.
 
 > Non c'è un livello superiore, il router di Ry fa parte della backbone di internet, quindi comunica con gli altri router fra pari, non gerarchicamente.
 
-Qui entrano in gioco le tabelle di instradamento. Per questo esercizio le tabelle sono quelle indicate in [figura](https://www.notion.so/Forwarding-dei-pacchetti-f4f175479b1e444b9fd866c343b8d655) sopra ogni router.
+Qui entrano in gioco le tabelle di instradamento. Per questo esercizio le tabelle sono quelle indicate in [figura](assets/routing-esempio-rappresentazione-grafica.png) sopra ogni router.
 
 I router della backbone reale usano Tabelle di Instradamento più complesse chiaramente.
 

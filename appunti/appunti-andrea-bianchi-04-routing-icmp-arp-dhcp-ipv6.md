@@ -6,7 +6,7 @@ Il forwarding è il processo di instradamento dei pacchetti dal mittente verso l
 
 Lo abbiamo affrontato tramite un esempio:
 
-[Forwarding dei pacchetti](./appunti-andrea-bianchi-forwarding-pacchetti.md)
+[Forwarding dei pacchetti](../esercizi/2021-2022-esercitazioni/appunti-andrea-bianchi-forwarding-pacchetti.md)
 
 # Routing
 
