@@ -169,7 +169,7 @@ Al contrario del subnetting c'è il supernetting, ovvero raggruppare più reti i
 
 ## Esercizi da esame
 
-[Subnetting e netmask](https://www.notion.so/Subnetting-e-netmask-982f381f3d9f44c683350ff7cc29355d)
+[Subnetting e netmask](./appunti-andrea-bianchi-subnetting-netmask.md)
 
 # Notazione CIDR - Classless Inter Domain Routing
 
