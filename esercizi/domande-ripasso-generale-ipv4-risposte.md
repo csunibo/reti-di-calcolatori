@@ -209,15 +209,15 @@ N.B. Se qualcuno riesce a disegnarlo con la tavoletta grafica e inserirlo fa un 
 
 ![immagine domanda 15](immagine-domanda-15.png)
 
-|nome|netmask|primo ip|ultimo ip|router|gateway|host sprecati|
-|--|--|--|--|--|--|--|
-|B2|/25|20.0.0.1|20.0.0.125|20.0.0.126|20.0.0.254|1|
-|B1|/29|20.0.0.129|20.0.0.133|20.0.0.134|20.0.0.254|1|
-|B|/24|20.0.0.1|20.0.0.253|20.0.0.254|20.0.1.254|118|
-|A2|/26|20.0.1.1|20.0.1.61|20.0.1.62|20.0.1.126|32|
-|A1|/27|20.0.1.65|20.0.1.93|20.0.1.94|20.0.1.126|15|
-|A|/25|20.0.1.1|20.0.1.125|20.0.1.126|20.0.1.254|30|
-|firewall|/23|20.0.0.1|20.0.1.253|20.0.1.254|__ |126|
+|nome|netmask|primo ip|ultimo ip|router|gateway|
+|--|--|--|--|--|--|
+|B2|/24|10.0.0.1|10.0.0.253|10.0.0.254|10.0.1.254|
+|B1|/28|10.0.1.1|10.0.1.13|20.0.0.14|10.0.1.254|
+|B|/23|10.0.0.1|10.0.1.253|10.0.1.254|10.0.3.254|
+|A2|/26|10.0.2.1|10.0.2.61|10.0.2.62|10.0.2.126|
+|A1|/27|10.0.2.65|10.0.2.93|10.0.2.94|10.0.2.126|
+|A|/25|10.0.2.1|10.0.2.125|10.0.2.126|10.0.3.254|
+|firewall|/22|10.0.0.1|10.0.3.253|10.0.3.254|__|
 
 Le prime due reti hanno solo un host di scarto, per una implementazione piu elastica sarebbe meglio estendere gli host alla potenza di due successiva e far scalare tutti gli indirizzi ip. La scelta dipende dal tipo di rete e dal suo utilizzo.
 
