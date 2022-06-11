@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <style>{{ .Stylesheet }}</style>
+    <title>Index of {{ .FullPath }}</title>
+  </head>
+  <body>
+    <h1>
+      Index of <a href="https://csunibo.github.io/">csunibo</a>{{ if not (eq (len .Root.Name) 0) }}/<a href="{{ .Root.URL }}">{{ .Root.Name }}</a>{{ end }}/{{ range $i,$a := .Parts }}<a href="{{ .URL }}">{{ .Name }}</a>/{{ end }}
+    </h1>
+    <hr>
+    <div class="g">
