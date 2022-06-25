@@ -1,6 +1,6 @@
-# Reti di calcolatori
+# Reti di calcolatori (93315)
 
-Una raccolta di risorse per l'insegnamento di Reti di calcolatori(93315) del Corso di Laurea in Informatica.
+Una raccolta di risorse per l'insegnamento di Reti di calcolatori (93315) del Corso di Laurea in Informatica.
 
 ## Presentazione
 
