@@ -330,11 +330,11 @@ Più dati mando e più brevi saranno i segnali, rendendo quindi più difficile i
 
 Il livello più semplice di una rete a commutazione di pacchetto è il **segmento di rete locale**.
 
-Esso è formato da un mezzo di trasmissione condiviso con un canale ad accesso multiplo ([ricordi i canali?](./appunti-andrea-bianchi-01-introduzione.md/#canale-di-comunicazione-di-rete)). Tutte le schede video connesse al segmento ricevono le trasmissioni effettuate e trasmettono a tutte le altre schede video.
+Esso è formato da un mezzo di trasmissione condiviso con un canale ad accesso multiplo ([ricordi i canali?](./appunti-andrea-bianchi-01-introduzione.md/#canale-di-comunicazione-di-rete)). Tutte le schede di rete connesse al segmento ricevono le trasmissioni effettuate e trasmettono a tutte le altre schede di rete.
 
-Per riconoscere il destinatario di una trasmissione viene dato ad ogni scheda video un **indirizzo MAC**, che è unico ed è assegnato in fase di produzione, è come un'impronta digitale della scheda di rete.
+Per riconoscere il destinatario di una trasmissione viene dato ad ogni scheda di rete un **indirizzo MAC**, che è unico ed è assegnato in fase di produzione, è come un'impronta digitale della scheda di rete.
 
-Il Livello MAC/LLC si occupa di fornire l'accesso al mezzo trasmissivo (Livello Fisico), quindi si occupa di trasmettere i dati, di specificare a chi è destinata la trasmissione e di ricevere i dati destinati alla propria scheda video.
+Il Livello MAC/LLC si occupa di fornire l'accesso al mezzo trasmissivo (Livello Fisico), quindi si occupa di trasmettere i dati, di specificare a chi è destinata la trasmissione e di ricevere i dati destinati alla propria scheda di rete.
 
 Tipicamente un Livello MAC/LLC si comporta così per trasmettere dati:
 
