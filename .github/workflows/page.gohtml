@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
     <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="{{ .Root.URL.Path }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ .Root.URL }}" />
+    <meta property="og:image" content="/img/unibo512.png" />
+    <meta property="og:site_name" content="CSUnibo" />
     <style>{{ .Stylesheet }}</style>
     <title>Index of {{ .Root.URL.Path }}</title>
     <!-- icons -->
