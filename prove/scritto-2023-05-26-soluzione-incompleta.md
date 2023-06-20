@@ -17,12 +17,13 @@
 
 5) [10 punti] Le seguenti quattro regole di tabella OpenFlow che tipo di gestione di traffico di rete SDN locale implementano sul router sul quale sono programmate?
 ![Tabella](assets/scritto-2023-05-26-testo-es5.png)
+
    1) Blocca tutti i pacchetti provenienti da IPv4 `100.2.3.4` e indirizzati a porta 80 (web server)
    2) Manda su porta 3 (fisica) i pacchetti su VLAN 12 se destinati a IPv4 `100.2.3.4` e SMTP server (port 25)
    3) Blocca tutti i pacchetti da socket `<100.2.3.6, 3918>` a socket `<100.2.3.7, 4233>`
    4) Manda su porta fisica 5 tutti i broadcast di livello MAC sul segmento locale
 
-6) [10 punti] Se un canale radio OFDM ha 18 sub-carrier e un symbol lrate di 500.000 simboli/sec quanti simboli della codifica digitale PSK deve adottare per riuscire a trasferire un file da 54 Mbit in non piu' di 4 secondi, massimizzando la resistenza all'errore di canale? Quanto tempo impiegherebbe esattamente a completare il trasferimento? (trascurare tutti gli overhead e gli errori di transmissione
+6) [10 punti] Se un canale radio OFDM ha 18 sub-carrier e un symbol lrate di 500.000 simboli/sec quanti simboli della codifica digitale PSK deve adottare per riuscire a trasferire un file da 54 Mbit in non piu' di 4 secondi, massimizzando la resistenza all'errore di canale? Quanto tempo impiegherebbe esattamente a completare il trasferimento? (trascurare tutti gli overhead e gli errori di transmissione)
    - prestazione canale = 18 * 500.000 symbols/sec = 9.000.000 symbols/sec
    - requisito: 54 Mbit/s / 4 = 13.500.000 bit/s (bitrate minimo nominale del canale)
    - Si evince che serve almento una QPSK (una BPSK non basterebbe a soddisfare il requisito)
@@ -45,6 +46,7 @@ E se la maschera di rete fosse /21?
       - `54.205.211.33` = `00110110.11001101.11010 011.00100001`
 
 9) [25 punti] Esercizio di programmazione di rete
+
 ![Disegno](assets/scritto-2023-05-26-testo-es9.png)
 
 10) [10 punti] Un sistema di comunicazione wireless ha un dispositivo ricevente R in grado di garantire le seguenti prestazioni:
@@ -56,7 +58,7 @@ Bitrate nominale possibile | se in presenza di Link Budget minimo
 4 Mbps | 14 dB
 8 Mbps | 20 dB
 16 Mbps | 26 dB
-32 Mbps | 32 dB I
+32 Mbps | 32 dB
 64 Mbps | 38 dB
 
    1) Assumendo che l'Intentional radiator del trasmettitore T fornisca la potenza di segnale Ptx = 25mW a un'antenna con guadagno di 8 dBi e che il ricevitore abbla un'antenna omnidirezionale con guadagno di 3 dBi, e che il path loss dovuto alla distanza di un miglio sia pari a -80 dB, a quale velocità avviene la comunicazione se la Receiver Sensitivity di R è pari a -75 dBm?
