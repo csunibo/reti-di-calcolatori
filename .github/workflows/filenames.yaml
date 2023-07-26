@@ -1,0 +1,11 @@
+name: Check filenames
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  filenames:
+    name: Check filenames
+    uses: csunibo/config/.github/workflows/filenames.yml@main
